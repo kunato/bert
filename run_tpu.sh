@@ -1,12 +1,14 @@
 export STORAGE_BUCKET=gs://ink-ml-1
+export TPU_NAME=demo-tpu
 export DATA_DIR=$STORAGE_BUCKET/bert_in
 export BERT_BASE_DIR=$STORAGE_BUCKET/bert_out
+
 
 python run_pretraining.py \
   --input_file=$DATA_DIR/tf_examples.tfrecord \
   --output_dir=$BERT_BASE_DIR \
   --use_tpu=True \
-  --tpu_name=demo-tpu \
+  --tpu_name=$TPU_NAME \
   --do_train=True \
   --do_eval=True \
   --bert_config_file=$BERT_BASE_DIR/bert_config.json \
