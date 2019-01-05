@@ -2,9 +2,9 @@ export STORAGE_BUCKET=gs://ink-ml-1
 export TPU_NAME=demo-tpu
 export DATA_DIR=$STORAGE_BUCKET/bert_in
 export BERT_BASE_DIR=$STORAGE_BUCKET/bert_out
+rm nohup.out
 
-
-python run_pretraining.py \
+nohup python run_pretraining.py \
   --input_file=$DATA_DIR/tf_examples.tfrecord \
   --output_dir=$BERT_BASE_DIR \
   --use_tpu=True \
@@ -18,4 +18,4 @@ python run_pretraining.py \
   --num_train_steps=1000000 \
   --num_warmup_steps=100000 \
   --learning_rate=1e-4 \
-  --save_checkpoints_steps=200000
+  --save_checkpoints_steps=200000 &
