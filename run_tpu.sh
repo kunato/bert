@@ -12,7 +12,7 @@ nohup python run_pretraining.py \
   --do_train=True \
   --do_eval=True \
   --bert_config_file=$BERT_BASE_DIR/bert_config.json \
-  --train_batch_size=32 \
+  --train_batch_size=128 \
   --max_seq_length=128 \
   --max_predictions_per_seq=20 \
   --num_train_steps=1000000 \

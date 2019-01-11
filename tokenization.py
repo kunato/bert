@@ -183,8 +183,6 @@ class FullTokenizer(object):
   def convert_ids_to_tokens(self, ids):
     return convert_by_vocab(self.inv_vocab, ids)
 
-
-from bpe_helper import BPE
 import sentencepiece as spm
 
 class ThaiTokenizer(object):
@@ -194,15 +192,13 @@ class ThaiTokenizer(object):
     self.vocab = load_vocab(vocab_file)
     self.inv_vocab = {v: k for k, v in self.vocab.items()}
     
-    self.bpe = BPE(vocab_file)    
     self.s = spm.SentencePieceProcessor()
     self.s.Load(spm_file)
 
   def tokenize(self, text):
-    bpe_tokens = self.bpe.encode(text).split(' ')
     spm_tokens = self.s.EncodeAsPieces(text)
     
-    tokens = bpe_tokens if len(bpe_tokens) < len(spm_tokens) else spm_tokens
+    tokens = spm_tokens
     
     split_tokens = []
     
@@ -212,12 +208,13 @@ class ThaiTokenizer(object):
       if token.startswith('_') and not token in self.vocab:
         split_tokens.append('_')
         new_token = token[1:]
-        
-      if not new_token in self.vocab:
-        split_tokens.append('<unk>')
-      else:
         split_tokens.append(new_token)
-
+      else:
+        if not new_token in self.vocab:
+          split_tokens.append('<unk>')
+        else:
+          split_tokens.append(new_token)
+        
     return split_tokens
 
   def convert_tokens_to_ids(self, tokens):

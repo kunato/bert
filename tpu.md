@@ -37,3 +37,7 @@ Note
 - You can stop the tpu while not doing any calculation
 - It save checkpoint on only save_checkpoints_steps define in run command or default (1000)
 - Run with nohup ...... &
+- tail -f nohup.out #redirect nohup.out to terminal
+- If TPU fail, vm will automatically restart when it can connect to TPU, so you can restart TPU to make it healtly
+- If TPU fail, vm will auto restore only lastest checkpoint avaliable.
+

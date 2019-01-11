@@ -10,6 +10,8 @@ autopep8 = "*"
 [packages]
 tensorflow = ">=1.11.0"
 sentencepiece = "==0.0.9"
+numpy = "*"
+cython = "*"
 
 [requires]
 python_version = "3.6"
