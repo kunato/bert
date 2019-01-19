@@ -9,6 +9,7 @@ python run_classifier.py \
   --task_name=XNLI \
   --do_train=true \
   --do_eval=true \
+  --use_tpu=True \
   --data_dir=$XNLI_DIR \
   --vocab_file=$BPE_DIR/9000.vocab \
   --bert_config_file=$BERT_BASE_DIR/bert_config.json \
