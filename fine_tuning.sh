@@ -1,6 +1,6 @@
 export STORAGE_BUCKET=gs://ink-ml-1
 export TPU_NAME=demo-tpu
-export BPE_DIR=/path/to/bpe
+export BPE_DIR=$STORAGE_BUCKET/bpe
 export XNLI_DIR=$STORAGE_BUCKET/xnli
 export OUTPUT_DIR=$STORAGE_BUCKET/xnli_out
 export BERT_BASE_DIR=$STORAGE_BUCKET/bert_out
